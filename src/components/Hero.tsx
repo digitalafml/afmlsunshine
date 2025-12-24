@@ -18,10 +18,6 @@ const Hero = () => {
       {/* Content */}
       <div className="relative container mx-auto px-4 py-20">
         <div className="max-w-xl">
-          <span className="inline-block px-4 py-1.5 bg-primary/20 text-sunshine-gold font-semibold rounded-full text-sm mb-6 animate-fadeIn">
-            A Product of Akij Group
-          </span>
-          
           <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-6 animate-slideUp">
             Made with{" "}
             <span className="text-akij-red">Love</span>,{" "}

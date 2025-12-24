@@ -11,9 +11,9 @@ const reasons = [
   },
   {
     icon: Shield,
-    title: "Trusted by Akij",
+    title: "Trusted Quality",
     description:
-      "Backed by Akij Group's 60+ years of excellence in quality and reliability.",
+      "Backed by decades of excellence in quality and reliability.",
     color: "text-sunshine-gold",
     bgColor: "bg-primary/10",
   },
@@ -77,23 +77,6 @@ const WhySunshine = () => {
               </p>
             </div>
           ))}
-        </div>
-
-        {/* Akij Legacy Banner */}
-        <div className="mt-16 bg-card rounded-2xl p-8 md:p-12 shadow-card text-center">
-          <div className="max-w-3xl mx-auto">
-            <span className="text-6xl md:text-7xl font-serif text-primary mb-4 block">
-              60+
-            </span>
-            <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-4">
-              Years of Akij Legacy
-            </h3>
-            <p className="text-muted-foreground">
-              As a proud member of the Akij Group, Sunshine carries forward 
-              decades of trust and excellence. From flour mills to your kitchen, 
-              we ensure every product meets the highest standards of quality.
-            </p>
-          </div>
         </div>
       </div>
     </section>
