@@ -62,15 +62,6 @@ const QualitySection = () => {
           ))}
         </div>
 
-        {/* Trust Badge */}
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-3 bg-secondary-foreground/10 px-6 py-3 rounded-full">
-            <span className="text-2xl">🏆</span>
-            <span className="font-medium">
-              BSTI Certified • ISO 22000 • HACCP Compliant
-            </span>
-          </div>
-        </div>
       </div>
     </section>
   );
