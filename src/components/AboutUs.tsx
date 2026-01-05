@@ -22,7 +22,7 @@ const AboutUs = () => {
         {/* Content */}
         <div className="max-w-4xl mx-auto space-y-6 mb-12">
           <p className="text-muted-foreground leading-relaxed">
-            Akij Flour Mills Ltd., a proud concern of Akij Insaaf, is a leading name in Bangladesh's flour industry. Established in 2014 in Narayanganj, the company began its commercial operations in 2016. Driven by a commitment to premium quality and exceptional service—hallmarks of the AKIJ legacy—Akij Flour Mills has earned the trust and loyalty of millions under its flagship brand, SUNSHINE.
+            Akij Flour Mills Ltd., a proud concern of Akij Insaf, is a leading name in Bangladesh's flour industry. Established in 2014 in Narayanganj, the company began its commercial operations in 2016. Driven by a commitment to premium quality and exceptional service—hallmarks of the AKIJ legacy—Akij Flour Mills has earned the trust and loyalty of millions under its flagship brand, SUNSHINE.
           </p>
           <p className="text-muted-foreground leading-relaxed">
             Equipped with state-of-the-art BUHLER machinery from Switzerland, our facility boasts a daily production capacity of 1,200 metric tons. This advanced technology ensures consistency, purity, and reliability across every product we deliver.
