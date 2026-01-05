@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, Facebook, Youtube } from "lucide-react";
 import logo from "@/assets/logo.png";
+import akijInsafLogo from "@/assets/akij-insaf-logo.png";
 
 const Footer = () => {
   return (
@@ -102,10 +103,10 @@ const Footer = () => {
           <p className="text-background/50 text-sm text-center md:text-left">
             © {new Date().getFullYear()} Sunshine by Akij Flour Mills Ltd. All rights reserved.
           </p>
-          <p className="text-background/50 text-sm">
-            A product of{" "}
-            <span className="text-primary font-medium">Akij Group</span>
-          </p>
+          <div className="flex items-center gap-2 text-background/50 text-sm">
+            <span>A brand of</span>
+            <img src={akijInsafLogo} alt="AKIJ INSAF" className="h-6 w-auto" />
+          </div>
         </div>
       </div>
     </footer>
