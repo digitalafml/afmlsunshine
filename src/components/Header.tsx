@@ -48,7 +48,7 @@ const Header = () => {
                   key="akij"
                   src={akijFlourMillsLogo}
                   alt="Akij Flour Mills Ltd."
-                  className="h-8 md:h-10 w-auto absolute left-0"
+                  className="h-10 md:h-14 w-auto absolute left-0"
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
