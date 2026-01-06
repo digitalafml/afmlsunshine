@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
@@ -18,33 +19,48 @@ const Hero = () => {
       {/* Content */}
       <div className="relative container mx-auto px-4 py-20">
         <div className="max-w-xl">
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-6 animate-slideUp">
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-6"
+          >
             Made with{" "}
             <span className="text-akij-red">Love</span>{" "}
             <br className="hidden sm:block" />
             Served with{" "}
             <span className="text-sunshine-gold">Care</span>
-          </h1>
+          </motion.h1>
           
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-slideUp" style={{ animationDelay: "0.1s" }}>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-lg md:text-xl text-muted-foreground mb-8"
+          >
             From our family to yours — quality staple foods that bring 
             warmth to every Bangladeshi kitchen.
-          </p>
+          </motion.p>
           
-          <div className="flex flex-wrap gap-4 animate-slideUp" style={{ animationDelay: "0.2s" }}>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="flex flex-wrap gap-4"
+          >
             <a
               href="#products"
-              className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground font-semibold rounded-full hover:bg-sunshine-gold transition-colors shadow-product"
+              className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground font-semibold rounded-full hover:bg-sunshine-gold hover:scale-105 transition-all duration-300 shadow-product"
             >
               Explore Products
             </a>
             <a
               href="#why-sunshine"
-              className="inline-flex items-center justify-center px-8 py-3 border-2 border-akij-red text-akij-red font-semibold rounded-full hover:bg-akij-red hover:text-secondary-foreground transition-colors"
+              className="inline-flex items-center justify-center px-8 py-3 border-2 border-akij-red text-akij-red font-semibold rounded-full hover:bg-akij-red hover:text-secondary-foreground hover:scale-105 transition-all duration-300"
             >
               Why Sunshine
             </a>
-          </div>
+          </motion.div>
         </div>
       </div>
       
