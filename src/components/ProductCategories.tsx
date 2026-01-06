@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import atta from "@/assets/products/atta.png";
 import brownAtta from "@/assets/products/brown-atta.png";
 import maida from "@/assets/products/maida.png";
@@ -58,12 +59,24 @@ const products = [
   },
 ];
 
+const cardVariants = {
+  initial: { opacity: 0, y: 50 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-50px" }
+};
+
 const ProductCategories = () => {
   return (
     <section id="products" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
           <span className="inline-block px-4 py-1 bg-primary/10 text-sunshine-gold font-medium rounded-full text-sm mb-4">
             Our Products
           </span>
@@ -74,23 +87,30 @@ const ProductCategories = () => {
             From breakfast to dinner, Sunshine brings you the finest ingredients 
             to make every meal special.
           </p>
-        </div>
+        </motion.div>
 
         {/* Products Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {products.map((product, index) => (
-            <div
+            <motion.div
               key={product.name}
-              className="group bg-card rounded-2xl p-4 md:p-6 shadow-card hover:shadow-product transition-all duration-300 hover:-translate-y-2"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group bg-card rounded-2xl p-4 md:p-6 shadow-card hover:shadow-product transition-shadow duration-300"
+              initial="initial"
+              whileInView="whileInView"
+              viewport={cardVariants.viewport}
+              variants={cardVariants}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
             >
               {/* Product Image */}
               <div className="relative h-32 md:h-40 mb-4 flex items-center justify-center">
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent rounded-xl" />
-                <img
+                <motion.img
                   src={product.image}
                   alt={product.name}
-                  className="h-full w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                  className="h-full w-auto object-contain"
+                  whileHover={{ scale: 1.1, rotate: 2 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 />
               </div>
 
@@ -106,7 +126,7 @@ const ProductCategories = () => {
                   {product.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
