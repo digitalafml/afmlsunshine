@@ -4,6 +4,7 @@ import ProductCategories from "@/components/ProductCategories";
 import WhySunshine from "@/components/WhySunshine";
 import AboutUs from "@/components/AboutUs";
 import QualitySection from "@/components/QualitySection";
+import RecipeSection from "@/components/RecipeSection";
 import MediaSection from "@/components/MediaSection";
 import Footer from "@/components/Footer";
 
@@ -17,6 +18,7 @@ const Index = () => {
         <WhySunshine />
         <AboutUs />
         <QualitySection />
+        <RecipeSection />
         <MediaSection />
       </main>
       <Footer />
