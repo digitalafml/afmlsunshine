@@ -85,7 +85,11 @@ const MediaSection = () => {
               className="group relative overflow-hidden rounded-2xl shadow-card hover:shadow-product transition-shadow duration-300"
             >
               {/* Thumbnail */}
-              <div className="relative aspect-video overflow-hidden">
+              <button
+                onClick={() => setActiveVideo(video.id)}
+                className="relative aspect-video overflow-hidden w-full"
+                aria-label={`Play ${video.title}`}
+              >
                 <img
                   src={video.thumbnail}
                   alt={video.title}
@@ -93,14 +97,10 @@ const MediaSection = () => {
                 />
                 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-foreground/20 group-hover:bg-foreground/40 transition-all duration-300" />
                 
                 {/* Play Button */}
-                <button
-                  onClick={() => setActiveVideo(video.id)}
-                  className="absolute inset-0 flex items-center justify-center"
-                  aria-label={`Play ${video.title}`}
-                >
+                <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
@@ -108,15 +108,8 @@ const MediaSection = () => {
                   >
                     <Play className="w-7 h-7 md:w-8 md:h-8 text-primary-foreground ml-1" fill="currentColor" />
                   </motion.div>
-                </button>
-                
-                {/* Title */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
-                  <h3 className="text-white font-semibold text-lg md:text-xl">
-                    {video.title}
-                  </h3>
                 </div>
-              </div>
+              </button>
             </motion.div>
           ))}
         </motion.div>
