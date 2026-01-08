@@ -2,12 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, X } from "lucide-react";
 
-interface RecipeVideo {
-  id: string;
-  thumbnail: string;
-}
-
-const recipes: RecipeVideo[] = [
+const recipes = [
   {
     id: "dJJB2RjGop4",
     thumbnail: `https://img.youtube.com/vi/dJJB2RjGop4/maxresdefault.jpg`,
@@ -27,7 +22,7 @@ const recipes: RecipeVideo[] = [
 ];
 
 const RecipeSection = () => {
-  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [activeVideo, setActiveVideo] = useState(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
