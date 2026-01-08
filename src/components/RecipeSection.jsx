@@ -5,19 +5,19 @@ import { Play, X } from "lucide-react";
 const recipes = [
   {
     id: "dJJB2RjGop4",
-    thumbnail: `https://img.youtube.com/vi/dJJB2RjGop4/maxresdefault.jpg`,
+    thumbnail: `https://img.youtube.com/vi/dJJB2RjGop4/hqdefault.jpg`,
   },
   {
     id: "DGWgGYii6qs",
-    thumbnail: `https://img.youtube.com/vi/DGWgGYii6qs/maxresdefault.jpg`,
+    thumbnail: `https://img.youtube.com/vi/DGWgGYii6qs/hqdefault.jpg`,
   },
   {
     id: "sqcWOq3eKUM",
-    thumbnail: `https://img.youtube.com/vi/sqcWOq3eKUM/maxresdefault.jpg`,
+    thumbnail: `https://img.youtube.com/vi/sqcWOq3eKUM/hqdefault.jpg`,
   },
   {
     id: "HWY5pt8piuA",
-    thumbnail: `https://img.youtube.com/vi/HWY5pt8piuA/maxresdefault.jpg`,
+    thumbnail: `https://img.youtube.com/vi/HWY5pt8piuA/hqdefault.jpg`,
   },
 ];
 
