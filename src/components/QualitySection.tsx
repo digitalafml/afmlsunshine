@@ -26,7 +26,7 @@ const qualityPoints = [
 
 const QualitySection = () => {
   return (
-    <section id="quality" className="py-20 bg-secondary text-secondary-foreground relative overflow-hidden">
+    <section id="quality" className="py-20 bg-akij-red text-secondary-foreground relative overflow-hidden">
       {/* Decorative Elements */}
       <motion.div 
         className="absolute top-0 left-0 w-64 h-64 bg-akij-red-dark/30 rounded-full -translate-x-1/2 -translate-y-1/2"

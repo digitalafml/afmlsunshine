@@ -13,8 +13,8 @@ const Hero = () => {
         style={{ backgroundImage: `url(${heroBg})` }}
       />
       
-      {/* White Gradient Overlay - from left to right */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-hero" />
       
       {/* Content */}
       <div className="relative container mx-auto px-4 py-20">
@@ -26,10 +26,10 @@ const Hero = () => {
             className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-6"
           >
             Made with{" "}
-            <span className="text-sunshine-gold italic">Love</span>{" "}
+            <span className="text-akij-red">Love</span>{" "}
             <br className="hidden sm:block" />
             Served with{" "}
-            <span className="text-akij-red italic">Care</span>
+            <span className="text-sunshine-gold">Care</span>
           </motion.h1>
           
           <motion.p 
@@ -56,7 +56,7 @@ const Hero = () => {
             </a>
             <a
               href="#why-sunshine"
-              className="inline-flex items-center justify-center px-8 py-3 border-2 border-akij-red text-akij-red font-semibold rounded-full hover:bg-akij-red hover:text-white hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center justify-center px-8 py-3 border-2 border-akij-red text-akij-red font-semibold rounded-full hover:bg-akij-red hover:text-secondary-foreground hover:scale-105 transition-all duration-300"
             >
               Why Sunshine
             </a>

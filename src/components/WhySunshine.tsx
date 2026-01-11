@@ -44,7 +44,7 @@ const cardVariants = {
 
 const WhySunshine = () => {
   return (
-    <section id="why-sunshine" className="py-20 bg-cream relative overflow-hidden">
+    <section id="why-sunshine" className="py-20 bg-cream">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div 
