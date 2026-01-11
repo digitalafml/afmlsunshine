@@ -44,7 +44,7 @@ const cardVariants = {
 
 const WhySunshine = () => {
   return (
-    <section id="why-sunshine" className="py-20 bg-cream">
+    <section id="why-sunshine" className="py-20 bg-secondary text-secondary-foreground relative overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div 
@@ -54,13 +54,13 @@ const WhySunshine = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block px-4 py-1 bg-akij-red/10 text-akij-red font-medium rounded-full text-sm mb-4">
+          <span className="inline-block px-4 py-1 bg-secondary-foreground/20 text-secondary-foreground font-medium rounded-full text-sm mb-4">
             Why Choose Us
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-secondary-foreground mb-4">
             Why Families Choose Sunshine
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-secondary-foreground/80 max-w-2xl mx-auto">
             We're not just a food brand — we're a promise of quality, 
             love, and trust to every Bangladeshi home.
           </p>
@@ -80,18 +80,18 @@ const WhySunshine = () => {
             >
               {/* Icon */}
               <motion.div
-                className={`inline-flex items-center justify-center w-16 h-16 rounded-full ${reason.bgColor} mb-6`}
+                className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary-foreground/10 mb-6"
                 whileHover={{ scale: 1.15, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
-                <reason.icon className={`w-8 h-8 ${reason.color}`} />
+                <reason.icon className="w-8 h-8 text-secondary-foreground" />
               </motion.div>
 
               {/* Content */}
-              <h3 className="font-serif text-xl text-foreground mb-3">
+              <h3 className="font-serif text-xl text-secondary-foreground mb-3">
                 {reason.title}
               </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+              <p className="text-secondary-foreground/70 text-sm leading-relaxed">
                 {reason.description}
               </p>
             </motion.div>
