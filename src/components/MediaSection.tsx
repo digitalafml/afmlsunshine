@@ -2,7 +2,13 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Play, X } from "lucide-react";
 
-const videos = [
+interface VideoItem {
+  id: string;
+  title: string;
+  thumbnail: string;
+}
+
+const videos: VideoItem[] = [
   {
     id: "IEEjAiUorac",
     title: "Sunshine TVC - Family Moments",
@@ -21,7 +27,7 @@ const videos = [
 ];
 
 const MediaSection = () => {
-  const [activeVideo, setActiveVideo] = useState(null);
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -38,7 +44,7 @@ const MediaSection = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.6, ease: "easeOut" as const },
     },
   };
 
