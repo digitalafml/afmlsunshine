@@ -13,8 +13,11 @@ const Hero = () => {
         style={{ backgroundImage: `url(${heroBg})` }}
       />
       
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/40" />
+      
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-hero" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
       
       {/* Content */}
       <div className="relative container mx-auto px-4 py-20">
@@ -23,7 +26,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-6"
+            className="font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6"
           >
             Made with{" "}
             <span className="text-akij-red">Love</span>{" "}
@@ -36,7 +39,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-lg md:text-xl text-muted-foreground mb-8"
+            className="text-lg md:text-xl text-white/90 mb-8"
           >
             From our family to yours — quality staple foods that bring 
             warmth to every Bangladeshi kitchen.
