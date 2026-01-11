@@ -13,11 +13,8 @@ const Hero = () => {
         style={{ backgroundImage: `url(${heroBg})` }}
       />
       
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/40" />
-      
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
+      {/* White Gradient Overlay - from left to right */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
       
       {/* Content */}
       <div className="relative container mx-auto px-4 py-20">
@@ -26,20 +23,20 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6"
+            className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-6"
           >
             Made with{" "}
-            <span className="text-akij-red">Love</span>{" "}
+            <span className="text-sunshine-gold italic">Love</span>{" "}
             <br className="hidden sm:block" />
             Served with{" "}
-            <span className="text-sunshine-gold">Care</span>
+            <span className="text-akij-red italic">Care</span>
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-lg md:text-xl text-white/90 mb-8"
+            className="text-lg md:text-xl text-muted-foreground mb-8"
           >
             From our family to yours — quality staple foods that bring 
             warmth to every Bangladeshi kitchen.
@@ -59,7 +56,7 @@ const Hero = () => {
             </a>
             <a
               href="#why-sunshine"
-              className="inline-flex items-center justify-center px-8 py-3 border-2 border-akij-red text-akij-red font-semibold rounded-full hover:bg-akij-red hover:text-secondary-foreground hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center justify-center px-8 py-3 border-2 border-akij-red text-akij-red font-semibold rounded-full hover:bg-akij-red hover:text-white hover:scale-105 transition-all duration-300"
             >
               Why Sunshine
             </a>
