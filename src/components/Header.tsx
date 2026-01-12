@@ -12,6 +12,7 @@ const Header = () => {
     { label: "Why Sunshine", href: "#why-sunshine" },
     { label: "About", href: "#about" },
     { label: "Quality", href: "#quality" },
+    { label: "Recipes", href: "#recipes" },
     { label: "Media", href: "#media" },
     { label: "Contact", href: "#contact" },
   ];
