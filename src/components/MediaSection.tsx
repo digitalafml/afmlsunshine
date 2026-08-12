@@ -1,48 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Play, X } from "lucide-react";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
-interface VideoItem {
-  id: string;
-  title: string;
-  thumbnail: string;
-}
-
-const videos: VideoItem[] = [
-  {
-    id: "IEEjAiUorac",
-    title: "Sunshine TVC - Family Moments",
-    thumbnail: `https://img.youtube.com/vi/IEEjAiUorac/maxresdefault.jpg`,
-  },
-  {
-    id: "hZgbNkbdCLs",
-    title: "Sunshine TVC - Quality Promise",
-    thumbnail: `https://img.youtube.com/vi/hZgbNkbdCLs/maxresdefault.jpg`,
-  },
-  {
-    id: "OkpKgpvY9gE",
-    title: "Sunshine TVC - Pure Goodness",
-    thumbnail: `https://img.youtube.com/vi/OkpKgpvY9gE/maxresdefault.jpg`,
-  },
-  {
-    id: "tpX3wqzPdcA",
-    title: "Sunshine Advert",
-    thumbnail: `https://img.youtube.com/vi/tpX3wqzPdcA/maxresdefault.jpg`,
-  },
-  {
-    id: "sFBlxEwbGTM",
-    title: "Sunshine Advert",
-    thumbnail: `https://img.youtube.com/vi/sFBlxEwbGTM/maxresdefault.jpg`,
-  },
-  {
-    id: "eTpodxrJRzs",
-    title: "Sunshine Advert",
-    thumbnail: `https://img.youtube.com/vi/eTpodxrJRzs/maxresdefault.jpg`,
-  },
-];
 
 const MediaSection = () => {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const { content } = useSiteContent();
+  const adverts = content.adverts;
+  const videos = adverts.videos.filter((v) => v.id);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -75,13 +41,13 @@ const MediaSection = () => {
           className="text-center mb-12 md:mb-16"
         >
           <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
-            Media Gallery
+            {adverts.badge}
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Watch Our <span className="text-gradient-sunshine">Adverts</span>
+            {adverts.title} <span className="text-gradient-sunshine">{adverts.highlight}</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Experience the warmth and quality of Sunshine through our television commercials
+            {adverts.subtitle}
           </p>
         </motion.div>
 
@@ -95,7 +61,7 @@ const MediaSection = () => {
         >
           {videos.map((video) => (
             <motion.div
-              key={video.id}
+              key={video.id + video.title}
               variants={itemVariants}
               className="group relative overflow-hidden rounded-2xl shadow-card hover:shadow-product transition-shadow duration-300 cursor-pointer"
               onClick={() => setActiveVideo(video.id)}
@@ -103,8 +69,8 @@ const MediaSection = () => {
               {/* Thumbnail */}
               <div className="relative aspect-video overflow-hidden">
                 <img
-                  src={video.thumbnail}
-                  alt="Advertisement video"
+                  src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                  alt={video.title || "Advertisement video"}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 

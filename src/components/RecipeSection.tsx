@@ -1,22 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Play, X } from "lucide-react";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
-interface RecipeVideo {
-  id: string;
-  thumbnail: string;
-}
-
-const recipes: RecipeVideo[] = [
-  { id: "sqcWOq3eKUM", thumbnail: `https://img.youtube.com/vi/sqcWOq3eKUM/maxresdefault.jpg` },
-  { id: "DGWgGYii6qs", thumbnail: `https://img.youtube.com/vi/DGWgGYii6qs/maxresdefault.jpg` },
-  { id: "dJJB2RjGop4", thumbnail: `https://img.youtube.com/vi/dJJB2RjGop4/maxresdefault.jpg` },
-  { id: "c2O9RkeKIFQ", thumbnail: `https://img.youtube.com/vi/c2O9RkeKIFQ/maxresdefault.jpg` },
-  { id: "HWY5pt8piuA", thumbnail: `https://img.youtube.com/vi/HWY5pt8piuA/maxresdefault.jpg` },
-];
 
 const RecipeSection = () => {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const { content } = useSiteContent();
+  const section = content.recipes;
+  const recipes = section.videos.filter(Boolean);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -49,15 +41,13 @@ const RecipeSection = () => {
           className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
         >
           <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
-            Recipe Corner
+            {section.badge}
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Delicious <span className="text-gradient-sunshine">Recipes</span>
+            {section.title} <span className="text-gradient-sunshine">{section.highlight}</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            Discover mouthwatering recipes crafted with Sunshine products. From traditional Bengali 
-            delicacies to modern fusion dishes, explore our collection of quick and easy recipes 
-            that bring joy to every meal. Watch, learn, and create culinary magic in your kitchen!
+            {section.description}
           </p>
         </motion.div>
 
@@ -69,17 +59,17 @@ const RecipeSection = () => {
           viewport={{ once: true }}
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
         >
-          {recipes.map((recipe) => (
+          {recipes.map((recipe, i) => (
             <motion.div
-              key={recipe.id}
+              key={recipe + i}
               variants={itemVariants}
               className="group relative overflow-hidden rounded-2xl shadow-card hover:shadow-product transition-all duration-300 cursor-pointer"
-              onClick={() => setActiveVideo(recipe.id)}
+              onClick={() => setActiveVideo(recipe)}
             >
               {/* Thumbnail - Portrait Aspect Ratio for Shorts */}
               <div className="relative aspect-[9/16] overflow-hidden">
                 <img
-                  src={recipe.thumbnail}
+                  src={`https://img.youtube.com/vi/${recipe}/maxresdefault.jpg`}
                   alt="Recipe video"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
