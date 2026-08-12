@@ -56,7 +56,8 @@ const Auth = () => {
     if (!values) return;
     setBusy(true);
     const { error } = await supabase.auth.signUp({
-      ...values,
+      email: String(values.email),
+      password: String(values.password),
       options: { emailRedirectTo: `${window.location.origin}/admin` },
     });
     setBusy(false);
