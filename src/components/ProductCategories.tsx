@@ -1,66 +1,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import atta from "@/assets/products/atta.png";
-import brownAtta from "@/assets/products/brown-atta.png";
-import maida from "@/assets/products/maida.png";
-import rice from "@/assets/products/rice.png";
-import soybeanOil from "@/assets/products/soybean-oil.png";
-import mustardOil from "@/assets/products/mustard-oil.png";
-import riceBranOil from "@/assets/products/rice-bran-oil.png";
-import suji from "@/assets/products/suji.png";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
-const products = [
-  {
-    name: "Atta",
-    namebn: "আটা",
-    description: "Premium quality atta for soft, fluffy rotis",
-    image: atta,
-  },
-  {
-    name: "Brown Atta",
-    namebn: "ব্রাউন আটা",
-    description: "Wholesome brown atta rich in fiber",
-    image: brownAtta,
-  },
-  {
-    name: "Maida",
-    namebn: "ময়দা",
-    description: "Fine maida for bakery and confectionery",
-    image: maida,
-  },
-  {
-    name: "Suji",
-    namebn: "সুজি",
-    description: "Fine suji for delicious halwa & desserts",
-    image: suji,
-  },
-  {
-    name: "Rice",
-    namebn: "চাল",
-    description: "Aromatic Chinigura and premium rice varieties",
-    image: rice,
-  },
-  {
-    name: "Soybean Oil",
-    namebn: "সয়াবিন তেল",
-    description: "Pure, healthy soybean oil for everyday cooking",
-    image: soybeanOil,
-  },
-  {
-    name: "Mustard Oil",
-    namebn: "সরিষার তেল",
-    description: "Traditional mustard oil with rich aroma",
-    image: mustardOil,
-  },
-  {
-    name: "Rice Bran Oil",
-    namebn: "রাইস ব্রান অয়েল",
-    description: "Heart-healthy rice bran oil for your kitchen",
-    image: riceBranOil,
-  },
-];
 
 const ProductCategories = () => {
+  const { content } = useSiteContent();
+  const section = content.products;
+  const products = section.items;
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
@@ -118,14 +64,13 @@ const ProductCategories = () => {
             className="inline-block px-4 py-1 bg-primary/10 text-sunshine-gold font-medium rounded-full text-sm mb-4"
             whileHover={{ scale: 1.05 }}
           >
-            Our Products
+            {section.badge}
           </motion.span>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
-            Quality Staples for Your Family
+            {section.title}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            From breakfast to dinner, Sunshine brings you the finest ingredients 
-            to make every meal special.
+            {section.subtitle}
           </p>
         </motion.div>
 
@@ -139,7 +84,7 @@ const ProductCategories = () => {
         >
           {products.map((product, index) => (
             <motion.div
-              key={product.name}
+              key={product.name + index}
               className="group relative bg-card rounded-2xl p-4 md:p-6 shadow-card cursor-pointer"
               variants={itemVariants}
               whileHover={{ 
