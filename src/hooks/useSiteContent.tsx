@@ -55,7 +55,7 @@ export const SiteContentProvider = ({ children }: { children: ReactNode }) => {
   const save = useCallback(async (next: SiteContent) => {
     const { error } = await supabase
       .from("site_content")
-      .upsert({ id: CONTENT_ID, data: next as unknown as Record<string, unknown> });
+      .upsert({ id: CONTENT_ID, data: JSON.parse(JSON.stringify(next)) });
     if (error) return { error: error.message };
     setContent(next);
     applyTheme(next.theme);
