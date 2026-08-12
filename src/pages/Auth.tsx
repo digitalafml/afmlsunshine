@@ -39,7 +39,10 @@ const Auth = () => {
     const values = validate();
     if (!values) return;
     setBusy(true);
-    const { error } = await supabase.auth.signInWithPassword(values);
+    const { error } = await supabase.auth.signInWithPassword({
+      email: String(values.email),
+      password: String(values.password),
+    });
     setBusy(false);
     if (error) {
       toast.error(error.message);
