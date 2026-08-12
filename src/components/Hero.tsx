@@ -1,10 +1,13 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import HeroVideoSlider from "@/components/HeroVideoSlider";
-
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 const Hero = () => {
   const containerRef = useRef<HTMLElement>(null);
+  const { content } = useSiteContent();
+  const hero = content.hero;
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -14,7 +17,6 @@ const Hero = () => {
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
-  // Text animation variants
   const letterVariants = {
     hidden: { opacity: 0, y: 50, filter: "blur(10px)" },
     visible: (i: number) => ({
@@ -40,10 +42,20 @@ const Hero = () => {
     },
   };
 
-  const title1 = "Made with";
-  const title2 = "Love";
-  const title3 = "Served with";
-  const title4 = "Care";
+  const renderWord = (text: string, offset: number, className = "") => (
+    <span className="overflow-hidden inline-block">
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={`${text}-${i}`}
+          variants={letterVariants}
+          custom={i + offset}
+          className={`inline-block ${className}`}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </span>
+  );
 
   return (
     <section
@@ -53,13 +65,12 @@ const Hero = () => {
     >
       {/* Background Video Slider (muted, autoplay) */}
       <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
-        <HeroVideoSlider />
+        <HeroVideoSlider videos={hero.videos} />
       </motion.div>
 
-      
       {/* Animated Gradient Overlay */}
-      <motion.div 
-        className="absolute inset-0 bg-gradient-hero"
+      <motion.div
+        className="absolute inset-0 bg-gradient-hero pointer-events-none"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2 }}
@@ -67,7 +78,7 @@ const Hero = () => {
 
       {/* Floating Decorative Elements */}
       <motion.div
-        className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-sunshine-gold/10 blur-3xl"
+        className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-sunshine-gold/10 blur-3xl pointer-events-none"
         animate={{
           scale: [1, 1.2, 1],
           x: [0, 30, 0],
@@ -76,7 +87,7 @@ const Hero = () => {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-1/3 left-1/3 w-48 h-48 rounded-full bg-akij-red/10 blur-3xl"
+        className="absolute bottom-1/3 left-1/3 w-48 h-48 rounded-full bg-akij-red/10 blur-3xl pointer-events-none"
         animate={{
           scale: [1, 1.3, 1],
           x: [0, -20, 0],
@@ -84,82 +95,40 @@ const Hero = () => {
         }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       />
-      
+
       {/* Content with Parallax */}
-      <motion.div 
+      <motion.div
         className="relative container mx-auto px-4 py-20"
         style={{ y: textY, opacity }}
       >
         <div className="max-w-xl">
-          {/* Animated Title */}
-          <motion.h1 
+          <motion.h1
             className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-6"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            <span className="overflow-hidden inline-block">
-              {title1.split("").map((char, i) => (
-                <motion.span
-                  key={`t1-${i}`}
-                  variants={letterVariants}
-                  custom={i}
-                  className="inline-block"
-                >
-                  {char === " " ? "\u00A0" : char}
-                </motion.span>
-              ))}
-            </span>{" "}
-            <span className="overflow-hidden inline-block">
-              {title2.split("").map((char, i) => (
-                <motion.span
-                  key={`t2-${i}`}
-                  variants={letterVariants}
-                  custom={i + title1.length}
-                  className="inline-block text-akij-red"
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </span>
+            {renderWord(hero.line1, 0)}{" "}
+            {renderWord(hero.highlight1, hero.line1.length, "text-akij-red")}
             <br className="hidden sm:block" />
-            <span className="overflow-hidden inline-block">
-              {title3.split("").map((char, i) => (
-                <motion.span
-                  key={`t3-${i}`}
-                  variants={letterVariants}
-                  custom={i + title1.length + title2.length + 5}
-                  className="inline-block"
-                >
-                  {char === " " ? "\u00A0" : char}
-                </motion.span>
-              ))}
-            </span>{" "}
-            <span className="overflow-hidden inline-block">
-              {title4.split("").map((char, i) => (
-                <motion.span
-                  key={`t4-${i}`}
-                  variants={letterVariants}
-                  custom={i + title1.length + title2.length + title3.length + 6}
-                  className="inline-block text-sunshine-gold"
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </span>
+            {renderWord(hero.line2, hero.line1.length + hero.highlight1.length + 5)}{" "}
+            {renderWord(
+              hero.highlight2,
+              hero.line1.length + hero.highlight1.length + hero.line2.length + 6,
+              "text-sunshine-gold"
+            )}
           </motion.h1>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-lg md:text-xl text-muted-foreground mb-8"
           >
-            From our family to yours — quality staple foods that bring 
-            warmth to every Bangladeshi kitchen.
+            {hero.subtitle}
           </motion.p>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -177,7 +146,7 @@ const Hero = () => {
                 whileHover={{ x: 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               />
-              <span className="relative z-10">Explore Products</span>
+              <span className="relative z-10">{hero.primaryCta}</span>
             </motion.a>
             <motion.a
               href="#why-sunshine"
@@ -192,15 +161,15 @@ const Hero = () => {
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               />
               <span className="relative z-10 group-hover:text-secondary-foreground transition-colors duration-300">
-                Why Sunshine
+                {hero.secondaryCta}
               </span>
             </motion.a>
           </motion.div>
         </div>
       </motion.div>
-      
+
       {/* Animated Bottom Wave */}
-      <div className="absolute bottom-0 left-0 right-0">
+      <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
         <motion.svg
           viewBox="0 0 1440 100"
           fill="none"
