@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import heroBg from "@/assets/hero-bg.jpg";
+import HeroVideoSlider from "@/components/HeroVideoSlider";
+
 
 const Hero = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -50,14 +51,11 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center pt-20 overflow-hidden"
     >
-      {/* Parallax Background Image */}
-      <motion.div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
-        style={{ 
-          backgroundImage: `url(${heroBg})`,
-          y: backgroundY,
-        }}
-      />
+      {/* Background Video Slider (muted, autoplay) */}
+      <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
+        <HeroVideoSlider />
+      </motion.div>
+
       
       {/* Animated Gradient Overlay */}
       <motion.div 
