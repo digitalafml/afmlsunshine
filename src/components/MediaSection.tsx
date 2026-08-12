@@ -24,6 +24,21 @@ const videos: VideoItem[] = [
     title: "Sunshine TVC - Pure Goodness",
     thumbnail: `https://img.youtube.com/vi/OkpKgpvY9gE/maxresdefault.jpg`,
   },
+  {
+    id: "tpX3wqzPdcA",
+    title: "Sunshine Advert",
+    thumbnail: `https://img.youtube.com/vi/tpX3wqzPdcA/maxresdefault.jpg`,
+  },
+  {
+    id: "sFBlxEwbGTM",
+    title: "Sunshine Advert",
+    thumbnail: `https://img.youtube.com/vi/sFBlxEwbGTM/maxresdefault.jpg`,
+  },
+  {
+    id: "eTpodxrJRzs",
+    title: "Sunshine Advert",
+    thumbnail: `https://img.youtube.com/vi/eTpodxrJRzs/maxresdefault.jpg`,
+  },
 ];
 
 const MediaSection = () => {
