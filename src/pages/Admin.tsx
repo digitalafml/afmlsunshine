@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { Plus, Trash2, LogOut, Save, RotateCcw, Download } from "lucide-react";
-import { downloadCodebaseZip } from "@/lib/exportCodebase";
-
+import { Plus, Trash2, LogOut, Save, RotateCcw } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { useSiteContent } from "@/hooks/useSiteContent";
@@ -34,20 +32,6 @@ const Admin = () => {
   const { content, save, refresh } = useSiteContent();
   const [draft, setDraft] = useState<SiteContent>(content);
   const [saving, setSaving] = useState(false);
-  const [exporting, setExporting] = useState(false);
-
-  const handleExport = async () => {
-    setExporting(true);
-    try {
-      await downloadCodebaseZip("sunshine-website-codebase.zip");
-      toast.success("Codebase ZIP downloaded");
-    } catch {
-      toast.error("Could not build the ZIP file");
-    } finally {
-      setExporting(false);
-    }
-  };
-
 
   useEffect(() => setDraft(content), [content]);
 
@@ -112,10 +96,6 @@ const Admin = () => {
             <p className="text-xs text-muted-foreground">{user?.email}</p>
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" onClick={handleExport} disabled={exporting}>
-              <Download className="mr-2 h-4 w-4" /> {exporting ? "Preparing..." : "Export code"}
-            </Button>
-
             <Button variant="outline" size="sm" onClick={() => setDraft(defaultContent)}>
               <RotateCcw className="mr-2 h-4 w-4" /> Reset
             </Button>
