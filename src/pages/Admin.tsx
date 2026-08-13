@@ -74,17 +74,14 @@ const Admin = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-sm text-muted-foreground">
-              This account ({user?.email}) is not an admin yet. If you are the site owner and no admin
-              exists, claim access below.
+              This account ({user?.email}) does not have admin access. Please contact the site owner.
             </p>
             <div className="flex gap-2">
-              <Button onClick={claimAdmin} disabled={claiming}>
-                Claim admin access
-              </Button>
               <Button variant="outline" onClick={() => supabase.auth.signOut()}>
                 Sign out
               </Button>
             </div>
+
           </CardContent>
         </Card>
       </main>
