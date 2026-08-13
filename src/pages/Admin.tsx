@@ -32,7 +32,6 @@ const Admin = () => {
   const { content, save, refresh } = useSiteContent();
   const [draft, setDraft] = useState<SiteContent>(content);
   const [saving, setSaving] = useState(false);
-  const [claiming, setClaiming] = useState(false);
 
   useEffect(() => setDraft(content), [content]);
 
@@ -58,21 +57,8 @@ const Admin = () => {
     toast.success("Website updated");
   };
 
-  const claimAdmin = async () => {
-    setClaiming(true);
-    const { data, error } = await supabase.rpc("claim_first_admin");
-    setClaiming(false);
-    if (error) {
-      toast.error(error.message);
-      return;
-    }
-    if (data) {
-      toast.success("You are now the admin. Reloading...");
-      window.location.reload();
-    } else {
-      toast.error("An admin already exists for this site.");
-    }
-  };
+
+
 
   if (loading) {
     return <main className="min-h-screen grid place-items-center text-muted-foreground">Loading...</main>;
@@ -87,17 +73,14 @@ const Admin = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-sm text-muted-foreground">
-              This account ({user?.email}) is not an admin yet. If you are the site owner and no admin
-              exists, claim access below.
+              This account ({user?.email}) does not have admin access. Please contact the site owner.
             </p>
             <div className="flex gap-2">
-              <Button onClick={claimAdmin} disabled={claiming}>
-                Claim admin access
-              </Button>
               <Button variant="outline" onClick={() => supabase.auth.signOut()}>
                 Sign out
               </Button>
             </div>
+
           </CardContent>
         </Card>
       </main>
