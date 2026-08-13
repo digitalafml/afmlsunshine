@@ -3,9 +3,10 @@ import JSZip from "jszip";
 // Raw contents of every project source file, inlined at build time by Vite.
 const sourceFiles = import.meta.glob(
   [
-    "/src/**/*",
-    "/public/**/*",
-    "/supabase/**/*",
+    "/src/**/*.{ts,tsx,js,jsx,css,json,md,svg}",
+    "/public/**/*.{txt,svg,json,xml}",
+    "/supabase/**/*.{ts,sql,toml,json}",
+
     "/index.html",
     "/package.json",
     "/tsconfig*.json",
