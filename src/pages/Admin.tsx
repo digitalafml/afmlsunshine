@@ -34,6 +34,20 @@ const Admin = () => {
   const { content, save, refresh } = useSiteContent();
   const [draft, setDraft] = useState<SiteContent>(content);
   const [saving, setSaving] = useState(false);
+  const [exporting, setExporting] = useState(false);
+
+  const handleExport = async () => {
+    setExporting(true);
+    try {
+      await downloadCodebaseZip("sunshine-website-codebase.zip");
+      toast.success("Codebase ZIP downloaded");
+    } catch {
+      toast.error("Could not build the ZIP file");
+    } finally {
+      setExporting(false);
+    }
+  };
+
 
   useEffect(() => setDraft(content), [content]);
 
