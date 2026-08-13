@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { Plus, Trash2, LogOut, Save, RotateCcw } from "lucide-react";
+import { Plus, Trash2, LogOut, Save, RotateCcw, Download } from "lucide-react";
+import { downloadCodebaseZip } from "@/lib/exportCodebase";
+
 import { supabase } from "@/integrations/supabase/client";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { useSiteContent } from "@/hooks/useSiteContent";
