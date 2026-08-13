@@ -112,6 +112,10 @@ const Admin = () => {
             <p className="text-xs text-muted-foreground">{user?.email}</p>
           </div>
           <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" onClick={handleExport} disabled={exporting}>
+              <Download className="mr-2 h-4 w-4" /> {exporting ? "Preparing..." : "Export code"}
+            </Button>
+
             <Button variant="outline" size="sm" onClick={() => setDraft(defaultContent)}>
               <RotateCcw className="mr-2 h-4 w-4" /> Reset
             </Button>
