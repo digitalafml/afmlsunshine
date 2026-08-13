@@ -32,7 +32,6 @@ const Admin = () => {
   const { content, save, refresh } = useSiteContent();
   const [draft, setDraft] = useState<SiteContent>(content);
   const [saving, setSaving] = useState(false);
-  const [claiming, setClaiming] = useState(false);
 
   useEffect(() => setDraft(content), [content]);
 
