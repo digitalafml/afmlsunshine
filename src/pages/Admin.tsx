@@ -58,21 +58,8 @@ const Admin = () => {
     toast.success("Website updated");
   };
 
-  const claimAdmin = async () => {
-    setClaiming(true);
-    const { data, error } = await supabase.rpc("claim_first_admin");
-    setClaiming(false);
-    if (error) {
-      toast.error(error.message);
-      return;
-    }
-    if (data) {
-      toast.success("You are now the admin. Reloading...");
-      window.location.reload();
-    } else {
-      toast.error("An admin already exists for this site.");
-    }
-  };
+
+
 
   if (loading) {
     return <main className="min-h-screen grid place-items-center text-muted-foreground">Loading...</main>;
