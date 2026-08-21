@@ -68,6 +68,24 @@ const Auth = () => {
     toast.success("Account created. You can sign in now.");
   };
 
+  const forgotPassword = async () => {
+    const parsed = credentialsSchema.shape.email.safeParse(email);
+    if (!parsed.success) {
+      toast.error("Enter your email address first");
+      return;
+    }
+    setBusy(true);
+    const { error } = await supabase.auth.resetPasswordForEmail(String(parsed.data), {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    setBusy(false);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    toast.success("Recovery link sent. Check your inbox.");
+  };
+
   return (
     <main className="min-h-screen flex items-center justify-center bg-muted/40 px-4">
       <Card className="w-full max-w-md">
