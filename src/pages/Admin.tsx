@@ -128,6 +128,7 @@ const Admin = () => {
             <TabsTrigger value="products">Products</TabsTrigger>
             <TabsTrigger value="adverts">Adverts</TabsTrigger>
             <TabsTrigger value="recipes">Recipes</TabsTrigger>
+            <TabsTrigger value="account">Account</TabsTrigger>
           </TabsList>
 
           {/* THEME */}

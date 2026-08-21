@@ -129,6 +129,9 @@ const Auth = () => {
               <Button className="w-full mt-6" onClick={signIn} disabled={busy}>
                 Sign in
               </Button>
+              <Button variant="link" className="w-full mt-2" onClick={forgotPassword} disabled={busy}>
+                Forgot password?
+              </Button>
             </TabsContent>
             <TabsContent value="signup">
               <Button className="w-full mt-6" onClick={signUp} disabled={busy}>
