@@ -8,6 +8,7 @@ import { useSiteContent } from "@/hooks/useSiteContent";
 import { SiteContent, defaultContent, parseYouTubeId } from "@/content/siteContent";
 import { hexToHsl, hslToHex } from "@/lib/color";
 import ImageField from "@/components/admin/ImageField";
+import AccountSettings from "@/components/admin/AccountSettings";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -128,6 +129,7 @@ const Admin = () => {
             <TabsTrigger value="products">Products</TabsTrigger>
             <TabsTrigger value="adverts">Adverts</TabsTrigger>
             <TabsTrigger value="recipes">Recipes</TabsTrigger>
+            <TabsTrigger value="account">Account</TabsTrigger>
           </TabsList>
 
           {/* THEME */}
@@ -460,6 +462,10 @@ const Admin = () => {
                 </Button>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          <TabsContent value="account">
+            <AccountSettings currentEmail={user?.email ?? ""} />
           </TabsContent>
         </Tabs>
       </div>
